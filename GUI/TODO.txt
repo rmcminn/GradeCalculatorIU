@@ -1,4 +1,0 @@
-TODO
-- [] Create grade and credit hour JTextFields
-- [] give it a layout
-- [] add image title
