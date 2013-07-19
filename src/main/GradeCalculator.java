@@ -19,6 +19,7 @@ public class GradeCalculator
 		JFrame gradeCalcFrame = new GradeCalcFrame();
 
 		gradeCalcFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gradeCalcFrame.setLocationRelativeTo(null);
 		gradeCalcFrame.setResizable(false);
 		gradeCalcFrame.setVisible(true);
 	}

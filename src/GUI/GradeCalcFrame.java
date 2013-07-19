@@ -10,6 +10,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
+
+import about.AboutFrame;
 
 /**
  * Creates the frame for the GPA Calculator
@@ -25,6 +28,7 @@ public class GradeCalcFrame extends JFrame
 	// Components of the title panel
 	private JLabel title;
 	private JPanel titlePanel;
+	private JButton aboutButton;
 	
 	// components of class components panel
 	private JPanel classComponentsPanel;
@@ -37,16 +41,19 @@ public class GradeCalcFrame extends JFrame
 	// components for calcButtonPanel
 	private JButton calcButton;
 	private JLabel resultLabel;
-	private JPanel calcButtonPanel;
+	private JPanel ButtonPanel;
 	
 	// overall panel
 	private JPanel gradeCalcPanel;
+	
+	//about frame
+	private JFrame aboutFrame;
 
 	public GradeCalcFrame()
 	{
 		createTitlePanel();
 		createClassComponentsPanel();
-		createCalcButtonPanel();
+		createButtonPanel();
 		createCalcPanel();
 		setSize(FRAME_WIDTH, FRAME_HEIGHT);
 	}
@@ -57,8 +64,30 @@ public class GradeCalcFrame extends JFrame
 	private void createTitlePanel()
 	{
 		titlePanel = new JPanel();
-		title = new JLabel("Indiana University GPA Calculator");
+		aboutButton = new JButton("About");
+		title = new JLabel("Indiana University GPA Calculator                                           ");
+		
+		ActionListener aboutButtonListener = new AboutButtonListener();
+		aboutButton.addActionListener(aboutButtonListener);
+		
 		titlePanel.add(title);
+		titlePanel.add(aboutButton);
+	}
+	/**
+	 * creates the action listener for the aboutButton
+	 */
+	class AboutButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent event) {
+			aboutFrame = new AboutFrame();
+
+			aboutFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+			aboutFrame.setResizable(false);
+			aboutFrame.setTitle("About");
+			aboutFrame.setLocationRelativeTo(aboutButton);
+			aboutFrame.setVisible(true);
+			
+		}
 	}
 
 	/**
@@ -195,9 +224,9 @@ public class GradeCalcFrame extends JFrame
 	/**
 	 * creates the calculate button and adds the action listener to it
 	 */
-	private void createCalcButtonPanel()
+	private void createButtonPanel()
 	{
-		calcButtonPanel = new JPanel();
+		ButtonPanel = new JPanel();
 
 		calcButton = new JButton("Calculate");
 
@@ -206,8 +235,8 @@ public class GradeCalcFrame extends JFrame
 
 		resultLabel = new JLabel("GPA:     ");
 
-		calcButtonPanel.add(calcButton);
-		calcButtonPanel.add(resultLabel);
+		ButtonPanel.add(calcButton);
+		ButtonPanel.add(resultLabel);
 	}
 
 	/**
@@ -220,7 +249,7 @@ public class GradeCalcFrame extends JFrame
 
 		gradeCalcPanel.add(titlePanel, BorderLayout.NORTH);
 		gradeCalcPanel.add(classComponentsPanel, BorderLayout.CENTER);
-		gradeCalcPanel.add(calcButtonPanel, BorderLayout.SOUTH);
+		gradeCalcPanel.add(ButtonPanel, BorderLayout.SOUTH);
 
 		add(gradeCalcPanel);
 	}
