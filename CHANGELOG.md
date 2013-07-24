@@ -9,3 +9,7 @@ CHANGELOG
  
 0.2
 - added an about button
+ 
+0.3
+- Fixed bugs regarding the calculation
+- added a clear button
