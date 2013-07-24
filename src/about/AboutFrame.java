@@ -14,7 +14,6 @@ public class AboutFrame extends JFrame {
 
 	public AboutFrame(){
 		panel = new JPanel();
-		
 		createLabel();
 		setSize(FRAME_WIDTH, FRAME_HEIGHT);
 		add(panel);
@@ -25,7 +24,7 @@ public class AboutFrame extends JFrame {
 	public void createLabel(){
 		labelCopyright = new JLabel();
 		
-		labelCopyright.setText("Copyright \u00a9. July 19th, 2013. Ryder McMinn.\n");
+		labelCopyright.setText("Copyright \u00a9. July 24th, 2013. Ryder McMinn.\n");
 		panel.add(labelCopyright);
 	}
 }

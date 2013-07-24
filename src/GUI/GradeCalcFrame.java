@@ -14,6 +14,8 @@ import javax.swing.WindowConstants;
 
 import about.AboutFrame;
 
+import java.lang.NumberFormatException;
+
 /**
  * Creates the frame for the GPA Calculator
  * 
@@ -41,7 +43,9 @@ public class GradeCalcFrame extends JFrame
 	// components for calcButtonPanel
 	private JButton calcButton;
 	private JLabel resultLabel;
-	private JPanel ButtonPanel;
+	private JPanel buttonPanel;
+	private JButton clearButton;
+	private JLabel bufferLabel;
 	
 	// overall panel
 	private JPanel gradeCalcPanel;
@@ -118,12 +122,6 @@ public class GradeCalcFrame extends JFrame
 		//Class Credit Hour TextFields
 		for(int i = 0; i < 7; i++)
 			classCH[i] = new JTextField(FIELD_WIDTH);
-
-
-		// set all the credhours to zero so it can be parsed correctly by the listener
-		//(fix this...)
-		for(int i = 0; i < 7; i++)
-			classCH[i].setText("0");
 		
 		// adding components to the panel
 		for(int i = 0; i < 7; i++){
@@ -143,100 +141,131 @@ public class GradeCalcFrame extends JFrame
 		@Override
 		public void actionPerformed(ActionEvent event)
 		{
-			String[] grades = new String[7];
-			double[] credHours = new double[7];
+			try {
+				String[] grades = new String[7];
+				double[] credHours = new double[7];
 			
-			// collecting grades
-			for(int i = 0; i < 7; i++) {
-				grades[i] = classGrade[i].getText();
-				grades[i] = grades[i].toUpperCase();
-			}
+				// collecting grades
+				//TODO - devise a way to throw an error if it isn't a valid grade
+				for(int i = 0; i < 7; i++) {
+					grades[i] = classGrade[i].getText();
+					grades[i] = grades[i].toUpperCase();
+				}
 
-			// collecting credit hours
-			for(int i = 0; i < 7; i++)
-				credHours[i] = Double.parseDouble(classCH[i].getText());
-			
-			//Calculating total Credit hours
-			double totalCreditHours = 0;
-			for (double aClass : credHours)
-			{
-				totalCreditHours = totalCreditHours + aClass;
-			}
-			
-			//Calculates credit points
-			// TODO fix the bug where no grade and a cred hour yields an F
-			// instead of a no count
-			// TODO fix the bug where a blank Cred hour field yields an error
-			double credPoints = 0.0;
-			for (int i = 0; i < 7; i++)
-			{
-				if (!(grades[i].equals("")) || credHours[i] != 0)
-				{
-					switch (grades[i])
-					{
-						case "A":
-							credPoints = credPoints + (4.0 * credHours[i]);
-							break;
-						case "A-":
-							credPoints = credPoints + (3.7 * credHours[i]);
-							break;
-						case "B+":
-							credPoints = credPoints + (3.3 * credHours[i]);
-							break;
-						case "B":
-							credPoints = credPoints + (3.0 * credHours[i]);
-							break;
-						case "B-":
-							credPoints = credPoints + (2.7 * credHours[i]);
-							break;
-						case "C+":
-							credPoints = credPoints + (2.3 * credHours[i]);
-							break;
-						case "C":
-							credPoints = credPoints + (2.0 * credHours[i]);
-							break;
-						case "C-":
-							credPoints = credPoints + (1.7 * credHours[i]);
-							break;
-						case "D+":
-							credPoints = credPoints + (1.3 * credHours[i]);
-							break;
-						case "D":
-							credPoints = credPoints + (1.0 * credHours[i]);
-							break;
-						case "D-":
-							credPoints = credPoints + (0.7 * credHours[i]);
-							break;
-						case "F":
-							credPoints = credPoints + (0.0 * credHours[i]);
-							break;
+				// collecting credit hours
+				for(int i = 0; i < 7; i++) {
+					if(grades[i].equals(""))
+						credHours[i] = 0;
+					else {
+						credHours[i] = Double.parseDouble(classCH[i].getText());
+						if(credHours[i] < 1)
+							throw new NumberFormatException();
 					}
 				}
-			}
 			
-			//calculates GPA
-			double gpa = credPoints / totalCreditHours;
-			//sets it to a label
-			resultLabel.setText("GPA: " + gpa);
+				//Calculating total Credit hours
+				double totalCreditHours = 0;
+				for (double aClass : credHours)
+				{
+					totalCreditHours = totalCreditHours + aClass;
+				}	
+			
+				//Calculates credit points
+				double credPoints = 0.0;
+				for (int i = 0; i < 7; i++)
+				{
+					if (!(grades[i].equals("")) || credHours[i] != 0)
+					{
+						switch (grades[i])
+						{
+							case "A":
+								credPoints = credPoints + (4.0 * credHours[i]);
+								break;
+							case "A-":
+								credPoints = credPoints + (3.7 * credHours[i]);
+								break;
+							case "B+":
+								credPoints = credPoints + (3.3 * credHours[i]);
+								break;
+							case "B":
+								credPoints = credPoints + (3.0 * credHours[i]);
+								break;
+							case "B-":
+								credPoints = credPoints + (2.7 * credHours[i]);
+								break;
+							case "C+":
+								credPoints = credPoints + (2.3 * credHours[i]);
+								break;
+							case "C":
+								credPoints = credPoints + (2.0 * credHours[i]);
+								break;
+							case "C-":
+								credPoints = credPoints + (1.7 * credHours[i]);
+								break;
+							case "D+":
+								credPoints = credPoints + (1.3 * credHours[i]);
+								break;
+							case "D":
+								credPoints = credPoints + (1.0 * credHours[i]);
+								break;
+							case "D-":
+								credPoints = credPoints + (0.7 * credHours[i]);
+								break;
+							case "F":
+								credPoints = credPoints + (0.0 * credHours[i]);
+								break;
+						}
+					}
+				}
+				
+				//calculates GPA
+				double gpa = credPoints / totalCreditHours;
+				//sets it to a label
+				resultLabel.setText("  GPA: " + gpa);
+			}
+			catch(NumberFormatException e){
+				resultLabel.setText("  Illegal Formatting");
+			}
 		}
 	}
-
+	
+	/**
+	 * creates the action listener for the aboutButton
+	 */
+	class ClearButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent event) {
+			for(JTextField textField : classGrade){
+				textField.setText("");
+			}
+			for(JTextField textField : classCH){
+				textField.setText("");
+			}
+		}
+	}
+	
 	/**
 	 * creates the calculate button and adds the action listener to it
 	 */
 	private void createButtonPanel()
 	{
-		ButtonPanel = new JPanel();
+		buttonPanel = new JPanel(new GridLayout(1, 4));
 
 		calcButton = new JButton("Calculate");
-
 		ActionListener calcButtonListener = new CalcButtonListener();
 		calcButton.addActionListener(calcButtonListener);
+		
+		clearButton = new JButton("Clear");
+		ActionListener clearButtonListener = new ClearButtonListener();
+		clearButton.addActionListener(clearButtonListener);
 
-		resultLabel = new JLabel("GPA:     ");
+		resultLabel = new JLabel("  GPA:     ");
+		bufferLabel = new JLabel(" ");
 
-		ButtonPanel.add(calcButton);
-		ButtonPanel.add(resultLabel);
+		buttonPanel.add(calcButton);
+		buttonPanel.add(resultLabel);
+		buttonPanel.add(bufferLabel);
+		buttonPanel.add(clearButton);
 	}
 
 	/**
@@ -249,7 +278,7 @@ public class GradeCalcFrame extends JFrame
 
 		gradeCalcPanel.add(titlePanel, BorderLayout.NORTH);
 		gradeCalcPanel.add(classComponentsPanel, BorderLayout.CENTER);
-		gradeCalcPanel.add(ButtonPanel, BorderLayout.SOUTH);
+		gradeCalcPanel.add(buttonPanel, BorderLayout.SOUTH);
 
 		add(gradeCalcPanel);
 	}
