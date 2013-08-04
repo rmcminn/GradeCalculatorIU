@@ -67,12 +67,14 @@ public class GradeCalcFrame extends JFrame
 	 */
 	private void createTitlePanel()
 	{
-		titlePanel = new JPanel();
+		titlePanel = new JPanel(new GridLayout(1,4));
 		aboutButton = new JButton("About");
-		title = new JLabel("Indiana University GPA Calculator                                           ");
+		title = new JLabel("Indiana University GPA Calculator");
 		
 		ActionListener aboutButtonListener = new AboutButtonListener();
 		aboutButton.addActionListener(aboutButtonListener);
+		
+		
 		
 		titlePanel.add(title);
 		titlePanel.add(aboutButton);
@@ -146,7 +148,6 @@ public class GradeCalcFrame extends JFrame
 				double[] credHours = new double[7];
 			
 				// collecting grades
-				//TODO - devise a way to throw an error if it isn't a valid grade
 				for(int i = 0; i < 7; i++) {
 					grades[i] = classGrade[i].getText();
 					grades[i] = grades[i].toUpperCase();
