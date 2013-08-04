@@ -1,8 +1,12 @@
 CHANGELOG
 ==========
 
-0.21
+0.31
 - Fixed sizing issue on Macs
+
+0.3
+- Fixed bugs regarding the calculation
+- added a clear button
 
 0.2
 - added an about button

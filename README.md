@@ -1,17 +1,19 @@
-GradeCalculatorIU   0.21
+GradeCalculatorIU   0.31
 =================
 
 A Grade Calculator for Indiana University
 
 NOT AFFILIATED WITH INDIANA UNIVERSITY IN ANY WAY.
 
-***
+Tools Used:
+-----------
+- javax.swing (http://docs.oracle.com/javase/1.4.2/docs/api/javax/swing/package-summary.html)
 
-#### Any questions, bugs, or concerns
 Contact me:
+-----------
 
-Ryder McMinn
+Any questions, bugs, or concerns
 
+Ryder McMinn<br/>
 rmcminn@indiana.edu
 
-***
