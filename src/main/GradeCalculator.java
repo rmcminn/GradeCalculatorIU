@@ -17,7 +17,8 @@ public class GradeCalculator
 	public static void main(String[] args)
 	{
 		JFrame gradeCalcFrame = new GradeCalcFrame();
-
+		
+		gradeCalcFrame.setTitle("Indiana University GPA Calculator");
 		gradeCalcFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gradeCalcFrame.setLocationRelativeTo(null);
 		gradeCalcFrame.setResizable(false);

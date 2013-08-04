@@ -1,4 +1,4 @@
-GradeCalculatorIU   0.31
+GradeCalculatorIU   0.32
 =================
 
 A Grade Calculator for Indiana University

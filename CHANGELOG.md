@@ -1,6 +1,10 @@
 CHANGELOG
 ==========
 
+0.32
+- Added title to frame title
+- Added Version number
+
 0.31
 - Fixed sizing issue on Macs
 

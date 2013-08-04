@@ -23,12 +23,15 @@ import java.lang.NumberFormatException;
  */
 public class GradeCalcFrame extends JFrame
 {
-	// Sets the "default frame width and height
+	//defaults
 	private static final int FRAME_WIDTH = 400;
 	private static final int FRAME_HEIGHT = 300;
+	private static String version = "0.32";
 
 	// Components of the title panel
-	private JLabel title;
+	private JLabel versionLabel;
+	private JLabel buffer1;
+	private JLabel buffer2;
 	private JPanel titlePanel;
 	private JButton aboutButton;
 	
@@ -69,14 +72,17 @@ public class GradeCalcFrame extends JFrame
 	{
 		titlePanel = new JPanel(new GridLayout(1,4));
 		aboutButton = new JButton("About");
-		title = new JLabel("Indiana University GPA Calculator");
+		
+		versionLabel = new JLabel("Version " + version);
+		buffer1 = new JLabel("");
+		buffer2 = new JLabel("");
 		
 		ActionListener aboutButtonListener = new AboutButtonListener();
 		aboutButton.addActionListener(aboutButtonListener);
 		
-		
-		
-		titlePanel.add(title);
+		titlePanel.add(versionLabel);
+		titlePanel.add(buffer1);
+		titlePanel.add(buffer2);
 		titlePanel.add(aboutButton);
 	}
 	/**
