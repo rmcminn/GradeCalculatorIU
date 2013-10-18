@@ -1,6 +1,10 @@
 CHANGELOG
 ==========
 
+0.4
+- Fixed sizing issue with macs
+- made compatible with Java 1.6
+
 0.32
 - Added title to frame title
 - Added Version number

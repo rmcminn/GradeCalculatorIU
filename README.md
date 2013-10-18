@@ -1,4 +1,4 @@
-GradeCalculatorIU   0.32
+GradeCalculatorIU   0.4
 =================
 
 A Grade Calculator for Indiana University
@@ -14,6 +14,6 @@ Contact me:
 
 Any questions, bugs, or concerns
 
-Ryder McMinn<br/>
+Ryder McMinn<br />
 rmcminn@indiana.edu
 

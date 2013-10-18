@@ -21,12 +21,14 @@ import java.lang.NumberFormatException;
  * 
  * @author Ryder McMinn
  */
+
+//Compatible with Java 1.6
 public class GradeCalcFrame extends JFrame
 {
 	//defaults
-	private static final int FRAME_WIDTH = 400;
+	private static final int FRAME_WIDTH = 450;
 	private static final int FRAME_HEIGHT = 300;
-	private static String version = "0.32";
+	private static String version = "0.4";
 
 	// Components of the title panel
 	private JLabel versionLabel;
@@ -183,6 +185,44 @@ public class GradeCalcFrame extends JFrame
 				{
 					if (!(grades[i].equals("")) || credHours[i] != 0)
 					{
+						//changed from switch for compatibility issues
+						if (grades[i].equals("A")){
+							credPoints = credPoints + (4.0 * credHours[i]);
+						}
+						else if (grades[i].equals("A-")){
+							credPoints = credPoints + (3.7 * credHours[i]);
+						}
+						else if (grades[i].equals("B+")){
+							credPoints = credPoints + (3.3 * credHours[i]);
+						}
+						else if (grades[i].equals("B")){
+							credPoints = credPoints + (3.0 * credHours[i]);
+						}
+						else if (grades[i].equals("B-")){
+							credPoints = credPoints + (2.7 * credHours[i]);
+						}
+						else if (grades[i].equals("C+")){
+							credPoints = credPoints + (2.3 * credHours[i]);
+						}
+						else if (grades[i].equals("C")){
+							credPoints = credPoints + (2.0 * credHours[i]);
+						}
+						else if (grades[i].equals("C-")){
+							credPoints = credPoints + (1.7 * credHours[i]);
+						}
+						else if (grades[i].equals("D+")){
+							credPoints = credPoints + (1.3 * credHours[i]);
+						}
+						else if (grades[i].equals("D")){
+							credPoints = credPoints + (1.0 * credHours[i]);
+						}
+						else if (grades[i].equals("D-")){
+							credPoints = credPoints + (0.7 * credHours[i]);
+						}
+						else if (grades[i].equals("F")){
+							credPoints = credPoints + (4.0 * credHours[i]);
+						}
+						/* old switch statement. works in java 1.7
 						switch (grades[i])
 						{
 							case "A":
@@ -222,6 +262,7 @@ public class GradeCalcFrame extends JFrame
 								credPoints = credPoints + (0.0 * credHours[i]);
 								break;
 						}
+						*/
 					}
 				}
 				
