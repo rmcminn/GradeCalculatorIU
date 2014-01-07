@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
@@ -28,7 +29,7 @@ public class GradeCalcFrame extends JFrame
 	//defaults
 	private static final int FRAME_WIDTH = 450;
 	private static final int FRAME_HEIGHT = 300;
-	private static String version = "0.4";
+	private static String version = "1.0";
 
 	// Components of the title panel
 	private JLabel versionLabel;
@@ -272,7 +273,7 @@ public class GradeCalcFrame extends JFrame
 				resultLabel.setText("  GPA: " + gpa);
 			}
 			catch(NumberFormatException e){
-				resultLabel.setText("  Illegal Formatting");
+				JOptionPane.showMessageDialog(null, "Illegal Formatting", null, JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 	}

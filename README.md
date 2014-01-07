@@ -1,7 +1,7 @@
-GradeCalculatorIU   0.4
+GradeCalculatorIU   1.0
 =================
 
-A Grade Calculator for Indiana University
+A GPA Calculator for Indiana University
 
 NOT AFFILIATED WITH INDIANA UNIVERSITY IN ANY WAY.
 

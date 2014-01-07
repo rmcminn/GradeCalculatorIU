@@ -1,6 +1,10 @@
 CHANGELOG
 ==========
 
+1.0
+- Added error box for illegal formatting
+- fixed sizing for About Frame
+
 0.4
 - Fixed sizing issue with macs
 - made compatible with Java 1.6

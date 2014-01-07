@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 public class AboutFrame extends JFrame {
 	
 	private static final int FRAME_WIDTH = 300;
-	private static final int FRAME_HEIGHT = 200;
+	private static final int FRAME_HEIGHT = 75;
 			
 	private JLabel labelCopyright;
 	private JPanel panel;
@@ -24,7 +24,7 @@ public class AboutFrame extends JFrame {
 	public void createLabel(){
 		labelCopyright = new JLabel();
 		
-		labelCopyright.setText("Copyright \u00a9. October 18th, 2013. Ryder McMinn.\n");
+		labelCopyright.setText("Copyright \u00a9. January 6th, 2014. Ryder McMinn.\n");
 		panel.add(labelCopyright);
 	}
 }
