@@ -5,6 +5,9 @@ A GPA Calculator for Indiana University
 
 NOT AFFILIATED WITH INDIANA UNIVERSITY IN ANY WAY.
 
+Download:
+http://bit.ly/19Zklhj
+
 Tools Used:
 -----------
 - javax.swing (http://docs.oracle.com/javase/1.4.2/docs/api/javax/swing/package-summary.html)
