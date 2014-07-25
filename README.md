@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/rmcminn/GradeCalculatorIU.png?label=ready&title=Ready)](https://waffle.io/rmcminn/GradeCalculatorIU)
 GradeCalculatorIU   1.0
 =================
 
